@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Login"
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnMainLogin"
                     android:textColor="@color/text"
                     android:backgroundTint="@color/rusty">
                 </androidx.appcompat.widget.AppCompatButton>
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Register"
-                    android:id="@+id/btnRegister"
+                    android:id="@+id/btnMainRegister"
                     android:textColor="@color/text"
                     android:backgroundTint="@color/rusty">
                 </androidx.appcompat.widget.AppCompatButton>
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="About"
-                    android:id="@+id/btnAbout"
+                    android:id="@+id/btnMainAbout"
                     android:textColor="@color/text"
                     android:backgroundTint="@color/rusty">
                 </androidx.appcompat.widget.AppCompatButton>

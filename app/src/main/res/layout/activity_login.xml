@@ -10,48 +10,44 @@
     android:background="@color/background"
     tools:context=".LoginActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         android:paddingRight="15dp"
         android:paddingLeft="15dp">
-        <com.google.android.material.textfield.TextInputLayout
+
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/txtLoginEmail"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textColor="@color/text"
             android:textColorHint="@color/text"
             android:textAlignment="center"
-            android:id="@+id/emailLogin">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:textSize="20dp">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="23dp">
+        </EditText>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/txtLoginPassword"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:id="@+id/passwordLogin">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:inputType="textPassword"
-                android:hint="Password"
-                android:textSize="20dp">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_gravity="center_vertical"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp">
@@ -59,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnLoginLogin"
             android:textColor="@color/text"
             android:backgroundTint="@color/rusty">
         </androidx.appcompat.widget.AppCompatButton>
@@ -68,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
-            android:id="@+id/btnBack"
+            android:id="@+id/btnLoginBack"
             android:textColor="@color/text"
             android:backgroundTint="@color/rusty">
         </androidx.appcompat.widget.AppCompatButton>

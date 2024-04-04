@@ -1,10 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background"
+    tools:context=".LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterEmail"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterPassword"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterPasswordAgain"
+            android:inputType="textPassword"
+            android:hint="Password Again"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterUsername"
+            android:inputType="text"
+            android:hint="Username"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterFullname"
+            android:inputType="text"
+            android:hint="Fullname"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtRegisterPhone"
+            android:inputType="text"
+            android:hint="Phone Number"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:id="@+id/btnRegisterRegister"
+            android:textColor="@color/text"
+            android:backgroundTint="@color/rusty">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/btnRegisterBack"
+            android:textColor="@color/text"
+            android:backgroundTint="@color/rusty">
+        </androidx.appcompat.widget.AppCompatButton>
+    </LinearLayout>
+</LinearLayout>

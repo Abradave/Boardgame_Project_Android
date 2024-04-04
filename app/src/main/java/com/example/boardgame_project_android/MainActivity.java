@@ -13,9 +13,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatButton btnLogin;
-    private AppCompatButton btnRegister;
-    private AppCompatButton btnAbout;
+    private AppCompatButton btnMainLogin;
+    private AppCompatButton btnMainRegister;
+    private AppCompatButton btnMainAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
         init();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnMainLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        btnMainRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnAbout.setOnClickListener(new View.OnClickListener() {
+        btnMainAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
-        btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
-        btnAbout = findViewById(R.id.btnAbout);
+        btnMainLogin = findViewById(R.id.btnMainLogin);
+        btnMainRegister = findViewById(R.id.btnMainRegister);
+        btnMainAbout = findViewById(R.id.btnMainAbout);
     }
 }
