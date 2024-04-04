@@ -61,6 +61,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "All data is required!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (password != passwordAgain){
+                    Toast.makeText(RegisterActivity.this, "The passwords are not matching!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Users user = new Users(0,username, password, fullname, email, phone);
                 Gson jsonConverter = new Gson();
