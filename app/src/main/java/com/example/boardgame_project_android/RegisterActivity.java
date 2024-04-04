@@ -26,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText txtRegisterEmial;
     private EditText txtRegisterPassword;
-    private EditText txtRegisterPasswordAgain;
     private EditText txtRegisterUsername;
     private EditText txtRegisterFullname;
     private EditText txtRegisterPhone;
@@ -52,17 +51,12 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = txtRegisterEmial.getText().toString();
                 String password = txtRegisterPassword.getText().toString();
-                String passwordAgain = txtRegisterPasswordAgain.getText().toString();
                 String username = txtRegisterUsername.getText().toString();
                 String fullname = txtRegisterFullname.getText().toString();
                 String phone = txtRegisterPhone.getText().toString();
 
-                if (email.isEmpty() || password.isEmpty()|| passwordAgain.isEmpty() || username.isEmpty() || fullname.isEmpty() || phone.isEmpty()){
+                if (email.isEmpty() || password.isEmpty()|| username.isEmpty() || fullname.isEmpty() || phone.isEmpty()){
                     Toast.makeText(RegisterActivity.this, "All data is required!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (password != passwordAgain){
-                    Toast.makeText(RegisterActivity.this, "The passwords are not matching!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -87,7 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void init(){
         txtRegisterEmial = findViewById(R.id.txtRegisterEmail);
         txtRegisterPassword = findViewById(R.id.txtRegisterPassword);
-        txtRegisterPasswordAgain = findViewById(R.id.txtRegisterPasswordAgain);
         txtRegisterUsername = findViewById(R.id.txtRegisterUsername);
         txtRegisterFullname = findViewById(R.id.txtRegisterFullname);
         txtRegisterPhone = findViewById(R.id.txtRegisterPhone);
@@ -120,11 +113,20 @@ public class RegisterActivity extends AppCompatActivity {
         }
         protected void onPostExecute(Response response){
             if (response.getResponseCode() >= 400){
-                Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_LONG).show();
+                if (response.getResponseCode() == 422 && response.getContent().contains("email")){
+                    Toast.makeText(RegisterActivity.this, "This email has been registered already!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (response.getContent().contains("username")){
+                    Toast.makeText(RegisterActivity.this, "This username is taken!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (requestType.equals("POST")){
-                Toast.makeText(RegisterActivity.this, "Success",  Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "Success",  Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

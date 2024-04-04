@@ -46,18 +46,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterPasswordAgain"
-            android:inputType="textPassword"
-            android:hint="Password Again"
-            android:textColor="@color/text"
-            android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/txtRegisterUsername"
             android:inputType="text"
             android:hint="Username"
