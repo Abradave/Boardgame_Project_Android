@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBoardGameName"
+        android:text="Azul"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:textSize="20dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minimum Player Count:"
+            android:textColor="@color/text"
+            android:paddingRight="10dp"
+            android:textSize="20dp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtBoardGameMinPlayer"
+            android:text="1"
+            android:textColor="@color/text"
+            android:textSize="20dp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maximum Player Count:"
+            android:textColor="@color/text"
+            android:paddingRight="9dp"
+            android:textSize="20dp">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtBoardGameMaxPlayer"
+            android:text="2"
+            android:textColor="@color/text"
+            android:textSize="20dp">
+        </TextView>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBoardGameDescription"
+        android:textColor="@color/text"
+        android:text="Csigabiga"
+        android:textSize="20dp">
+    </TextView>
+
+</LinearLayout>
