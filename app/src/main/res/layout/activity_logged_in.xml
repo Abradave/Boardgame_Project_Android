@@ -29,7 +29,7 @@
             android:text="List of BoardGames"
             android:id="@+id/btnLoggedList"
             android:textColor="@color/text"
-            android:backgroundTint="@color/rusty">
+            android:backgroundTint="@color/button">
         </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -38,7 +38,7 @@
             android:text="Make An Appointment"
             android:id="@+id/btnLoggedMakeAppointment"
             android:textColor="@color/text"
-            android:backgroundTint="@color/rusty">
+            android:backgroundTint="@color/button">
         </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -47,7 +47,7 @@
             android:text="My Appointments"
             android:id="@+id/btnLoggedAppointments"
             android:textColor="@color/text"
-            android:backgroundTint="@color/rusty">
+            android:backgroundTint="@color/button">
         </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -56,7 +56,7 @@
             android:text="Logout"
             android:id="@+id/btnLoggedLogout"
             android:textColor="@color/text"
-            android:backgroundTint="@color/rusty">
+            android:backgroundTint="@color/button">
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 

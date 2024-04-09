@@ -1,10 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AboutActivity"
+    android:padding="15dp"
+    android:background="@color/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Our Team:"
+        android:textColor="@color/text"
+        android:padding="10dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="20sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bartha Ariana Janka"
+        android:padding="10dp"
+        android:textColor="@color/text"
+        android:textAlignment="center"
+        android:textSize="17sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zsár Dániel"
+        android:padding="10dp"
+        android:textColor="@color/text"
+        android:textAlignment="center"
+        android:textSize="17sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ábrahám Dávid"
+        android:padding="10dp"
+        android:textColor="@color/text"
+        android:textAlignment="center"
+        android:textSize="17sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact:"
+        android:textColor="@color/text"
+        android:padding="10dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="20sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="gameknights@gnk.hu"
+        android:padding="10dp"
+        android:textColor="@color/text"
+        android:textAlignment="center"
+        android:textSize="17sp">
+    </TextView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAboutBack"
+        android:text="Back"
+        android:textColor="@color/text"
+        android:backgroundTint="@color/button">
+    </androidx.appcompat.widget.AppCompatButton>
+
+</LinearLayout>

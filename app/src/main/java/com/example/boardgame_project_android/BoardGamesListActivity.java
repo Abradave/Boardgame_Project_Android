@@ -1,5 +1,6 @@
 package com.example.boardgame_project_android;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -31,6 +33,7 @@ public class BoardGamesListActivity extends AppCompatActivity {
     private String url = "http://10.0.2.2:8000/api/boardgame";
     private ListView lvBoardGamesList;
     private List<BoardGames> bg = new ArrayList<>();
+    private AppCompatButton btnListBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +47,17 @@ public class BoardGamesListActivity extends AppCompatActivity {
         init();
         RequestTask task = new RequestTask(url, "GET");
         task.execute();
+
+        btnListBack.setOnClickListener(v -> {
+            Intent intent = new Intent(BoardGamesListActivity.this, LoggedInActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
     public void init(){
         lvBoardGamesList = findViewById(R.id.lvBoardGamesList);
         lvBoardGamesList.setAdapter(new BoardGamesAdapter());
+        btnListBack = findViewById(R.id.btnListBack);
     }
 
     private class BoardGamesAdapter extends ArrayAdapter<BoardGames> {

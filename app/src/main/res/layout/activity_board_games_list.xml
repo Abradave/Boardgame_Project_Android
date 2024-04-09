@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:id="@+id/btnMainAbout"
+        android:id="@+id/btnListBack"
         android:textColor="@color/text"
-        android:backgroundTint="@color/rusty">
+        android:backgroundTint="@color/button">
     </androidx.appcompat.widget.AppCompatButton>
 
         <ListView
