@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="10dp"
+    tools:context=".AppointmentActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/twAppintmentDate">
+    </TextView>
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/npAppointmentPlayers">
+    </NumberPicker>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAppointmentBook"
+        android:textColor="@color/text"
+        android:backgroundTint="@color/button"
+        android:text="Book">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAppoinmentBack"
+        android:textColor="@color/text"
+        android:backgroundTint="@color/button"
+        android:text="Back">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lwAppointments"
+        tools:listitem="@layout/appointments_list_item">
+    </ListView>
+
+
+</LinearLayout>

@@ -34,6 +34,12 @@ public class LoggedInActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        btnLoggedMakeAppointment.setOnClickListener(v -> {
+            Intent intent = new Intent(LoggedInActivity.this, AppointmentActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
     public void init(){
         btnLoggedList = findViewById(R.id.btnLoggedList);

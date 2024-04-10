@@ -8,6 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtBoardGameName"
+        android:gravity="center"
+        android:textAllCaps="true"
         android:text="Azul"
         android:textStyle="bold"
         android:textColor="@color/text"
