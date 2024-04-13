@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtLoginPassword;
     private AppCompatButton btnLoginLogin;
     private AppCompatButton btnLoginBack;
-    private final String url = "http://10.0.2.2:8000/api/guest";
+    private final String url = "http://10.0.2.2:8000/api/guestlogin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()){
                 Toast.makeText(LoginActivity.this, "All data is mandatory", Toast.LENGTH_SHORT).show();
             }else {
-                RequestTask task = new RequestTask(url, "GET", email);
+                Users user = new Users(0 ,password,email);
+                Gson jsonConverter = new Gson();
+                RequestTask task = new RequestTask(url, "POST", jsonConverter.toJson(user));
                 task.execute();
             }
         });
@@ -66,44 +68,34 @@ public class LoginActivity extends AppCompatActivity {
         String requestUrl;
         String requestType;
         String requestParams;
-
         public RequestTask(String requestUrl, String requestType, String requestParams) {
             this.requestUrl = requestUrl;
             this.requestType = requestType;
             this.requestParams = requestParams;
         }
         @Override
-        protected Response doInBackground(Void... voids){
+        protected Response doInBackground(Void... voids) {
             Response response = null;
             try {
-                if (requestType.equals("GET")) {
-                    response = RequestHandler.get(requestUrl + "?g_email=" + requestParams);
+                if (requestType.equals("POST")) {
+                    response = RequestHandler.post(requestUrl, requestParams);
                 }
-            } catch (IOException e){
-                Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Toast.makeText(LoginActivity.this,
+                        e.toString(), Toast.LENGTH_SHORT).show();
             }
             return response;
         }
-
-        @Override
         protected void onPostExecute(Response response){
-            super.onPostExecute(response);
-            Gson converter = new Gson();
             if (response.getResponseCode() >= 400){
-                Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                Log.d("onPostExecuteError", response.getContent());
+                Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+                return;
             }
-            if (requestType.equals("GET")){
-                Users[] usersArray = converter.fromJson(response.getContent(),Users[].class);
-                if (usersArray.length > 0){
-                    Toast.makeText(LoginActivity.this,"Success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    Toast.makeText(LoginActivity.this,"Error", Toast.LENGTH_SHORT).show();
-                }
+            if (requestType.equals("POST")){
+                Toast.makeText(LoginActivity.this, "Success",  Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
+                startActivity(intent);
+                finish();
             }
         }
     }

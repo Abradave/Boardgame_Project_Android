@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText txtRegisterPhone;
     private AppCompatButton btnRegisterRegister;
     private AppCompatButton btnRegisterBack;
-    private String url = "http://10.0.2.2:8000/api/guest";
+    private String url = "http://10.0.2.2:8000/api/guestregister";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +100,8 @@ public class RegisterActivity extends AppCompatActivity {
         protected Response doInBackground(Void... voids) {
             Response response = null;
             try {
-                switch (requestType) {
-                    case "POST":
-                        response = RequestHandler.post(requestUrl, requestParams);
-                        break;
+                if (requestType.equals("POST")) {
+                    response = RequestHandler.post(requestUrl, requestParams);
                 }
             } catch (IOException e) {
                 Toast.makeText(RegisterActivity.this,

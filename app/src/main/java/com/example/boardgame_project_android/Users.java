@@ -21,6 +21,12 @@ public class Users {
         this.g_phone_number = g_phone_number;
     }
 
+    public Users(int id, String g_password, String g_email) {
+        this.id = id;
+        this.g_password = g_password;
+        this.g_email = g_email;
+    }
+
     public int getId() {
         return id;
     }
