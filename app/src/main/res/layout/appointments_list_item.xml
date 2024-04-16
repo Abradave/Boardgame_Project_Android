@@ -7,16 +7,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/twAppointmentDateList"
+        android:id="@+id/tvAppointmentDateList"
         android:textColor="@color/text"
-        android:text="dlknasdlknkladsn">
+        android:textAlignment="center"
+        android:text="1234:324:234">
     </TextView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/twAppointmentGKName"
+        android:id="@+id/tvAppointmentGKName"
         android:textColor="@color/text"
+        android:textAlignment="center"
         android:text="Valaki">
     </TextView>
 

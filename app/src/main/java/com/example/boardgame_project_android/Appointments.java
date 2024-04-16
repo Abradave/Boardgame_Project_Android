@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class Appointments {
     private int id;
-    private Date appointment;
+    private String appointment;
     private int employee_id;
-    private boolean booked;
+    private int booked;
     private int guest_id;
     private int board_game_id;
     private int number_of_players;
 
-    public Appointments(int id, Date appointment, int employee_id, boolean booked, int guest_id, int board_game_id, int number_of_players) {
+    public Appointments(int id, String appointment, int employee_id, int booked, int guest_id, int board_game_id, int number_of_players) {
         this.id = id;
         this.appointment = appointment;
         this.employee_id = employee_id;
@@ -29,11 +29,11 @@ public class Appointments {
         this.id = id;
     }
 
-    public Date getAppointment() {
+    public String getAppointment() {
         return appointment;
     }
 
-    public void setAppointment(Date appointment) {
+    public void setAppointment(String appointment) {
         this.appointment = appointment;
     }
 
@@ -45,11 +45,11 @@ public class Appointments {
         this.employee_id = employee_id;
     }
 
-    public boolean isBooked() {
+    public int isBooked() {
         return booked;
     }
 
-    public void setBooked(boolean booked) {
+    public void setBooked(int booked) {
         this.booked = booked;
     }
 

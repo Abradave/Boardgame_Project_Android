@@ -30,14 +30,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AppointmentActivity extends AppCompatActivity {
-    private String url = "http://10.0.2.2:8000/api/appointment";
-    private ListView lwAppointments;
+    private String urlapp = "http://10.0.2.2:8000/api/appointment";
+    private String urlemp = "http://10.0.2.2:8000/api/employee";
+    private ListView lvAppointments;
     private AppCompatButton btnAppointmentBook;
     private AppCompatButton btnAppointmentBack;
-    private TextView twAppointmentDateList;
-    private NumberPicker npAppointmentPlayers;
-    private TextView twAppointmentGKName;
     private List<Appointments> app = new ArrayList<>();
+    private List<Employee> emp = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class AppointmentActivity extends AppCompatActivity {
             return insets;
         });
         init();
-        RequestTask task = new RequestTask(url, "GET");
+        RequestTask task = new RequestTask(urlapp, "GET");
         task.execute();
 
         btnAppointmentBack.setOnClickListener(v -> {
@@ -61,31 +60,28 @@ public class AppointmentActivity extends AppCompatActivity {
     }
 
     public void init(){
-        lwAppointments = findViewById(R.id.lwAppointments);
-        lwAppointments.setAdapter(new AppointmentsAdapter());
+        lvAppointments = findViewById(R.id.lvAppointments);
+        lvAppointments.setAdapter(new AppointmentsAdapter());
         btnAppointmentBack = findViewById(R.id.btnAppoinmentBack);
         btnAppointmentBook = findViewById(R.id.btnAppoinmentBack);
-        twAppointmentDateList = findViewById(R.id.twAppointmentDateList);
-        twAppointmentGKName = findViewById(R.id.twAppointmentGKName);
-        npAppointmentPlayers = findViewById(R.id.npAppointmentPlayers);
     }
 
-    private class AppointmentsAdapter extends ArrayAdapter<BoardGames> {
+    private class AppointmentsAdapter extends ArrayAdapter<Appointments> {
 
-        public AppointmentsAdapter(){super(AppointmentActivity.this, R.layout.appointments_list_item);}
+        public AppointmentsAdapter(){super(AppointmentActivity.this, R.layout.appointments_list_item, app);}
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.appointments_list_item,null,false);
-            TextView twAppointmentDate = view.findViewById(R.id.twAppointmentDateList);
-            TextView twAppointmentGKName = view.findViewById(R.id.twAppointmentGKName);
+            TextView tvAppointmentDate = view.findViewById(R.id.tvAppointmentDateList);
+            TextView tvAppointmentGKName = view.findViewById(R.id.tvAppointmentGKName);
 
             Appointments actapp = app.get(position);
 
-            twAppointmentDate.setText(String.valueOf(actapp.getAppointment()));
-            twAppointmentGKName.setText(String.valueOf(actapp.getEmployee_id()));
+            tvAppointmentDate.setText(actapp.getAppointment());
+            tvAppointmentGKName.setText(String.valueOf(actapp.getEmployee_id()));
             return view;
         }
     }
@@ -122,7 +118,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 Appointments[] appArray = converter.fromJson(response.getContent(),Appointments[].class);
                 app.clear();
                 app.addAll(Arrays.asList(appArray));
-                lwAppointments.invalidateViews();
+                lvAppointments.invalidateViews();
                 Toast.makeText(AppointmentActivity.this, "Success", Toast.LENGTH_SHORT).show();
             }
         }

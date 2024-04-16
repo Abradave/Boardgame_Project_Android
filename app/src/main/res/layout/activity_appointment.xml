@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/twAppintmentDate">
+        android:id="@+id/twAppointmentDate">
     </TextView>
 
     <NumberPicker
@@ -43,7 +43,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lwAppointments"
+        android:id="@+id/lvAppointments"
         tools:listitem="@layout/appointments_list_item">
     </ListView>
 
