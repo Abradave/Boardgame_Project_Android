@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.FormatFlagsConversionMismatchException;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 

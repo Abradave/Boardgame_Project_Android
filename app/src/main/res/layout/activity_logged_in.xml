@@ -53,6 +53,15 @@
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:id="@+id/btnLoggedProfile"
+            android:textColor="@color/text"
+            android:backgroundTint="@color/button">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Logout"
             android:id="@+id/btnLoggedLogout"
             android:textColor="@color/text"

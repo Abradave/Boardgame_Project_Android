@@ -21,6 +21,11 @@ public class Appointments {
         this.number_of_players = number_of_players;
     }
 
+    public Appointments(int booked, int number_of_players) {
+        this.booked = booked;
+        this.number_of_players = number_of_players;
+    }
+
     public int getId() {
         return id;
     }

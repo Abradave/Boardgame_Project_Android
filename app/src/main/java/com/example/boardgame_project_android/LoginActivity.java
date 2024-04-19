@@ -17,6 +17,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtLoginPassword;
     private AppCompatButton btnLoginLogin;
     private AppCompatButton btnLoginBack;
+    public String actToken;
     private final String url = "http://10.0.2.2:8000/api/guestlogin";
 
     @Override
@@ -44,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             if (email.isEmpty() || password.isEmpty()){
                 Toast.makeText(LoginActivity.this, "All data is mandatory", Toast.LENGTH_SHORT).show();
             }else {
-                Users user = new Users(0 ,password,email);
+                Users user = new Users(email, password);
                 Gson jsonConverter = new Gson();
                 RequestTask task = new RequestTask(url, "POST", jsonConverter.toJson(user));
                 task.execute();
@@ -64,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLoginLogin = findViewById(R.id.btnLoginLogin);
         btnLoginBack = findViewById(R.id.btnLoginBack);
     }
+
     private class RequestTask extends AsyncTask<Void,Void,Response> {
         String requestUrl;
         String requestType;
@@ -92,7 +97,8 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
             if (requestType.equals("POST")){
-                Toast.makeText(LoginActivity.this, "Success",  Toast.LENGTH_SHORT).show();
+                actToken = response.getContent();
+                Toast.makeText(LoginActivity.this, actToken, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
                 startActivity(intent);
                 finish();

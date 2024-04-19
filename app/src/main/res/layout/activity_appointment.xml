@@ -10,27 +10,6 @@
     android:padding="10dp"
     tools:context=".AppointmentActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/twAppointmentDate">
-    </TextView>
-
-    <NumberPicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/npAppointmentPlayers">
-    </NumberPicker>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAppointmentBook"
-        android:textColor="@color/text"
-        android:backgroundTint="@color/button"
-        android:text="Book">
-    </androidx.appcompat.widget.AppCompatButton>
-
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +18,34 @@
         android:backgroundTint="@color/button"
         android:text="Back">
     </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAppoinmentValami"
+        android:textColor="@color/text"
+        android:backgroundTint="@color/button"
+        android:text="Valami">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvAppointmentDate"
+        android:text="Choose the number of players."
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:padding="10dp">
+    </TextView>
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/npAppointmentPlayers"
+        android:layout_margin="10dp">
+    </NumberPicker>
 
     <ListView
         android:layout_width="match_parent"

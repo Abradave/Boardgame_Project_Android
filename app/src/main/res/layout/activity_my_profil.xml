@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background"
+    tools:context=".LoginActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfilePassword"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfileUsername"
+            android:inputType="text"
+            android:hint="Username"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfileFullname"
+            android:inputType="text"
+            android:hint="Fullname"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfilePhone"
+            android:inputType="text"
+            android:hint="Phone Number"
+            android:textColor="@color/text"
+            android:textColorHint="@color/text"
+            android:textAlignment="center"
+            android:textSize="23dp">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:id="@+id/btnProfileUpdate"
+            android:textColor="@color/text"
+            android:backgroundTint="@color/button">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/btnProfileBack"
+            android:textColor="@color/text"
+            android:backgroundTint="@color/button">
+        </androidx.appcompat.widget.AppCompatButton>
+    </LinearLayout>
+</LinearLayout>
