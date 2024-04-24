@@ -16,7 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtLoginPassword;
     private AppCompatButton btnLoginLogin;
     private AppCompatButton btnLoginBack;
-    public String actToken;
     private final String url = "http://10.0.2.2:8000/api/guestlogin";
 
     @Override
@@ -86,19 +88,18 @@ public class LoginActivity extends AppCompatActivity {
                     response = RequestHandler.post(requestUrl, requestParams);
                 }
             } catch (IOException e) {
-                Toast.makeText(LoginActivity.this,
-                        e.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,e.toString(), Toast.LENGTH_SHORT).show();
             }
             return response;
         }
         protected void onPostExecute(Response response){
+            Gson converter = new Gson();
             if (response.getResponseCode() >= 400){
                 Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (requestType.equals("POST")){
-                actToken = response.getContent();
-                Toast.makeText(LoginActivity.this, actToken, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
                 startActivity(intent);
                 finish();
