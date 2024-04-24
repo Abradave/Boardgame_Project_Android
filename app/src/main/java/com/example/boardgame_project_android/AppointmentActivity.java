@@ -35,7 +35,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private ListView lvAppointments;
     private NumberPicker npAppointmentPlayers;
     private AppCompatButton btnAppointmentBack;
-    private List<Appointments> appppointment = new ArrayList<>();
+    private List<Appointments> appointment = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private class AppointmentsAdapter extends ArrayAdapter<Appointments> {
 
         public AppointmentsAdapter() {
-            super(AppointmentActivity.this, R.layout.appointments_list_item, appppointment);
+            super(AppointmentActivity.this, R.layout.appointments_list_item, appointment);
         }
 
         @NonNull
@@ -78,17 +78,17 @@ public class AppointmentActivity extends AppCompatActivity {
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.appointments_list_item, null, false);
-            TextView tvAppointmentDateList = view.findViewById(R.id.tvAppointmentDateList);
-            Button btnAppointmentBook = view.findViewById(R.id.btnAppointmentBook);
+            TextView tvAppointmentDateList = view.findViewById(R.id.tvAppointmentDate);
+            Button btnAppointmentChoose = view.findViewById(R.id.btnAppointmentChoose);
 
-            Appointments actapp = appppointment.get(position);
+            Appointments actapp = appointment.get(position);
 
             if (actapp.isBooked() == 0){
                 tvAppointmentDateList.setText(actapp.getAppointment());
             }
             else {
                 tvAppointmentDateList.setVisibility(View.GONE);
-                btnAppointmentBook.setVisibility(View.GONE);
+                btnAppointmentChoose.setVisibility(View.GONE);
             }
             return view;
         }
@@ -139,8 +139,8 @@ public class AppointmentActivity extends AppCompatActivity {
             switch (requestType) {
                 case "GET":
                     Appointments[] appArray = converter.fromJson(response.getContent(), Appointments[].class);
-                    appppointment.clear();
-                    appppointment.addAll(Arrays.asList(appArray));
+                    appointment.clear();
+                    appointment.addAll(Arrays.asList(appArray));
                     lvAppointments.invalidateViews();
                     break;
                 case "PUT":

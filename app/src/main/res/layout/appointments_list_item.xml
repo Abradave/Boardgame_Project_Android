@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvAppointmentDateList"
+        android:id="@+id/tvAppointmentDate"
         android:textColor="@color/text"
         android:textAlignment="center"
         android:text="1234:324:234">
@@ -17,10 +17,10 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnAppointmentBook"
+        android:id="@+id/btnAppointmentChoose"
         android:textColor="@color/text"
         android:backgroundTint="@color/button"
-        android:text="Book">
+        android:text="Choose">
     </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>
