@@ -19,7 +19,9 @@ import com.google.gson.Gson;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -93,13 +95,15 @@ public class LoginActivity extends AppCompatActivity {
             return response;
         }
         protected void onPostExecute(Response response){
-            Gson converter = new Gson();
             if (response.getResponseCode() >= 400){
                 Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (requestType.equals("POST")){
-                Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                String all = response.getContent().toString();
+                String[] idList = all.split(",");
+                ActualUser.id =  Integer.valueOf(idList[0].substring(6));
+                Toast.makeText(LoginActivity.this,"Success", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
                 startActivity(intent);
                 finish();

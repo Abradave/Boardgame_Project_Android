@@ -3,6 +3,7 @@ package com.example.boardgame_project_android;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,52 +76,5 @@ public class LoggedInActivity extends AppCompatActivity {
         btnLoggedAppointments = findViewById(R.id.btnLoggedAppointments);
         btnLoggedProfile = findViewById(R.id.btnLoggedProfile);
         btnLoggedLogout = findViewById(R.id.btnLoggedLogout);
-    }
-    public class RequestTask extends AsyncTask<Void, Void, Response> {
-        String requestUrl;
-        String requestType;
-        String requestParams;
-
-        public RequestTask(String requestUrl, String requestType, String requestParams){
-            this.requestUrl = requestUrl;
-            this.requestType = requestType;
-            this.requestParams = requestParams;
-        }
-        public RequestTask(String requestUrl, String requestType){
-            this.requestUrl = requestUrl;
-            this.requestType = requestType;
-        }
-        @Override
-        protected Response doInBackground(Void... voids){
-            Response response = null;
-            try{
-                switch (requestType) {
-                    case "GET":
-                        response = RequestHandler.get(requestUrl);
-                        break;
-                    case "POST":
-                        response = RequestHandler.post(requestUrl, requestParams);
-                        break;
-                }
-            }catch (IOException e){
-                Toast.makeText(LoggedInActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-            }
-            return response;
-        }
-        @Override
-        protected void onPostExecute(Response response){
-            super.onPostExecute(response);
-            Gson converter = new Gson();
-            if (response.getResponseCode() >= 400){
-                Toast.makeText(LoggedInActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                Log.d("onPostExecute:", response.getContent());
-            }
-            switch (requestType){
-                case "GET":
-                break;
-                case "POST":
-                    Toast.makeText(LoggedInActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }

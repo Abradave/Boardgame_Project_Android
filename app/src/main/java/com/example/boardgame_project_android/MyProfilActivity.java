@@ -28,7 +28,6 @@ public class MyProfilActivity extends AppCompatActivity {
     private EditText txtProfilePhone;
     private AppCompatButton btnProfileBack;
     private AppCompatButton btnProfileUpdate;
-    private List<Users> user = new ArrayList<>();
     private String url = "http://10.0.2.2:8000/api/guest";
 
     @Override
@@ -45,6 +44,7 @@ public class MyProfilActivity extends AppCompatActivity {
         RequestTask task = new RequestTask(url, "GET");
         task.execute();
 
+
         btnProfileBack.setOnClickListener(v -> {
             Intent intent = new Intent(MyProfilActivity.this, LoggedInActivity.class);
             startActivity(intent);
@@ -59,6 +59,8 @@ public class MyProfilActivity extends AppCompatActivity {
         btnProfileBack = findViewById(R.id.btnProfileBack);
         btnProfileUpdate = findViewById(R.id.btnProfileUpdate);
     }
+    
+
     public class RequestTask extends AsyncTask<Void, Void, Response> {
         String requestUrl;
         String requestType;
@@ -72,7 +74,7 @@ public class MyProfilActivity extends AppCompatActivity {
             Response response = null;
             try{
                 if (requestType.equals("GET")){
-                    response = RequestHandler.get(requestUrl);
+                    response = RequestHandler.get(requestUrl + "/" + ActualUser.id);
                 }
             }catch (IOException e){
                 Toast.makeText(MyProfilActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -88,10 +90,12 @@ public class MyProfilActivity extends AppCompatActivity {
                 Log.d("onPostExecute:", response.getContent());
             }
             if (requestType.equals("GET")){
-                Users[] userArray = converter.fromJson(response.getContent(),Users[].class);
-                user.clear();
-                user.addAll(Arrays.asList(userArray));
-                Toast.makeText(MyProfilActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                Users userObj = converter.fromJson(response.getContent(),Users.class);
+                txtProfileFullname.setText(userObj.getG_name());
+                txtProfileUsername.setText(userObj.getG_username());
+                txtProfilePhone.setText(userObj.getG_phone_number());
+                txtProfilePassword.setText(userObj.getG_password());
+                Toast.makeText(MyProfilActivity.this, response.getContent().toString(), Toast.LENGTH_SHORT).show();
             }
         }
     }
