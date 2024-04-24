@@ -19,15 +19,6 @@
         android:text="Back">
     </androidx.appcompat.widget.AppCompatButton>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAppoinmentValami"
-        android:textColor="@color/text"
-        android:backgroundTint="@color/button"
-        android:text="Valami">
-    </androidx.appcompat.widget.AppCompatButton>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -35,8 +35,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private ListView lvAppointments;
     private NumberPicker npAppointmentPlayers;
     private AppCompatButton btnAppointmentBack;
-    private AppCompatButton btnAppointmentValami;
-    private List<Appointments> app = new ArrayList<>();
+    private List<Appointments> appppointment = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,8 @@ public class AppointmentActivity extends AppCompatActivity {
             return insets;
         });
         init();
-        RequestTask task = new RequestTask(urlapp, "GET");
-        task.execute();
+        RequestTask taskapp = new RequestTask(urlapp, "GET");
+        taskapp.execute();
 
         btnAppointmentBack.setOnClickListener(v -> {
             Intent intent = new Intent(AppointmentActivity.this, LoggedInActivity.class);
@@ -63,7 +62,6 @@ public class AppointmentActivity extends AppCompatActivity {
         lvAppointments = findViewById(R.id.lvAppointments);
         lvAppointments.setAdapter(new AppointmentsAdapter());
         btnAppointmentBack = findViewById(R.id.btnAppoinmentBack);
-        btnAppointmentValami = findViewById(R.id.btnAppoinmentValami);
         npAppointmentPlayers = findViewById(R.id.npAppointmentPlayers);
         npAppointmentPlayers.setMinValue(1);
         npAppointmentPlayers.setMaxValue(10);
@@ -72,7 +70,7 @@ public class AppointmentActivity extends AppCompatActivity {
     private class AppointmentsAdapter extends ArrayAdapter<Appointments> {
 
         public AppointmentsAdapter() {
-            super(AppointmentActivity.this, R.layout.appointments_list_item, app);
+            super(AppointmentActivity.this, R.layout.appointments_list_item, appppointment);
         }
 
         @NonNull
@@ -81,18 +79,15 @@ public class AppointmentActivity extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.appointments_list_item, null, false);
             TextView tvAppointmentDateList = view.findViewById(R.id.tvAppointmentDateList);
-            TextView tvAppointmentGKName = view.findViewById(R.id.tvAppointmentGKName);
             Button btnAppointmentBook = view.findViewById(R.id.btnAppointmentBook);
 
-            Appointments actapp = app.get(position);
+            Appointments actapp = appppointment.get(position);
 
             if (actapp.isBooked() == 0){
                 tvAppointmentDateList.setText(actapp.getAppointment());
-                tvAppointmentGKName.setText(String.valueOf(actapp.getEmployee_id()));
             }
             else {
                 tvAppointmentDateList.setVisibility(View.GONE);
-                tvAppointmentGKName.setVisibility(View.GONE);
                 btnAppointmentBook.setVisibility(View.GONE);
             }
             return view;
@@ -144,12 +139,11 @@ public class AppointmentActivity extends AppCompatActivity {
             switch (requestType) {
                 case "GET":
                     Appointments[] appArray = converter.fromJson(response.getContent(), Appointments[].class);
-                    app.clear();
-                    app.addAll(Arrays.asList(appArray));
+                    appppointment.clear();
+                    appppointment.addAll(Arrays.asList(appArray));
                     lvAppointments.invalidateViews();
-                    Toast.makeText(AppointmentActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     break;
-                case "POST":
+                case "PUT":
                     Toast.makeText(AppointmentActivity.this, "Appointment Booked", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AppointmentActivity.this, LoggedInActivity.class);
                     startActivity(intent);

@@ -13,14 +13,6 @@
         android:text="1234:324:234">
     </TextView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvAppointmentGKName"
-        android:textColor="@color/text"
-        android:textAlignment="center"
-        android:text="Valaki">
-    </TextView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"

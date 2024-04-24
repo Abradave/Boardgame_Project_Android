@@ -67,7 +67,10 @@ public class LoggedInActivity extends AppCompatActivity {
         });
 
         btnLoggedLogout.setOnClickListener(v -> {
-
+            Intent intent = new Intent(LoggedInActivity.this, MainActivity.class);
+            ActualUser.id = 0;
+            startActivity(intent);
+            finish();
         });
     }
     public void init(){
