@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -35,7 +36,6 @@ public class AppointmentActivity extends AppCompatActivity {
     private NumberPicker npAppointmentPlayers;
     private AppCompatButton btnAppointmentBack;
     private AppCompatButton btnAppointmentValami;
-    private TextView tvAppointmentDate;
     private List<Appointments> app = new ArrayList<>();
 
     @Override
@@ -57,17 +57,6 @@ public class AppointmentActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-
-        btnAppointmentValami.setOnClickListener(v -> {
-            for (Appointments appointments : app){
-                if (appointments.isBooked() == 0){
-                    Toast.makeText(AppointmentActivity.this, String.valueOf(appointments.getEmployee_id()), Toast.LENGTH_SHORT).show();
-                    appointments.setBooked(1);
-                }
-            }
-        });
-
-
     }
 
     public void init() {
@@ -75,7 +64,6 @@ public class AppointmentActivity extends AppCompatActivity {
         lvAppointments.setAdapter(new AppointmentsAdapter());
         btnAppointmentBack = findViewById(R.id.btnAppoinmentBack);
         btnAppointmentValami = findViewById(R.id.btnAppoinmentValami);
-        tvAppointmentDate = findViewById(R.id.tvAppointmentDate);
         npAppointmentPlayers = findViewById(R.id.npAppointmentPlayers);
         npAppointmentPlayers.setMinValue(1);
         npAppointmentPlayers.setMaxValue(10);
@@ -94,19 +82,19 @@ public class AppointmentActivity extends AppCompatActivity {
             View view = inflater.inflate(R.layout.appointments_list_item, null, false);
             TextView tvAppointmentDateList = view.findViewById(R.id.tvAppointmentDateList);
             TextView tvAppointmentGKName = view.findViewById(R.id.tvAppointmentGKName);
-            AppCompatButton btnAppointmentBook = view.findViewById(R.id.btnAppointmentBook);
+            Button btnAppointmentBook = view.findViewById(R.id.btnAppointmentBook);
 
             Appointments actapp = app.get(position);
 
-            if (actapp.isBooked() == 0) {
+            if (actapp.isBooked() == 0){
                 tvAppointmentDateList.setText(actapp.getAppointment());
                 tvAppointmentGKName.setText(String.valueOf(actapp.getEmployee_id()));
             }
             else {
-
+                tvAppointmentDateList.setVisibility(View.GONE);
+                tvAppointmentGKName.setVisibility(View.GONE);
+                btnAppointmentBook.setVisibility(View.GONE);
             }
-
-
             return view;
         }
     }
@@ -130,11 +118,14 @@ public class AppointmentActivity extends AppCompatActivity {
         @Override
         protected Response doInBackground(Void... voids) {
             Response response = null;
-            try {
-                if (requestType.equals("GET")) {
-                    response = RequestHandler.get(requestUrl);
-                } else if (requestType.equals("POST")) {
-                    response = RequestHandler.post(requestUrl, requestParams);
+            try{
+                switch(requestType){
+                    case "GET":
+                        response = RequestHandler.get(requestUrl);
+                        break;
+                    case "PUT":
+                        response = RequestHandler.put(requestUrl + "/" + ActualUser.id,requestParams);
+                        break;
                 }
             } catch (IOException e) {
                 Toast.makeText(AppointmentActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -150,18 +141,20 @@ public class AppointmentActivity extends AppCompatActivity {
                 Toast.makeText(AppointmentActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 Log.d("onPostExecute:", response.getContent());
             }
-            if (requestType.equals("GET")) {
-                Appointments[] appArray = converter.fromJson(response.getContent(), Appointments[].class);
-                app.clear();
-                app.addAll(Arrays.asList(appArray));
-                lvAppointments.invalidateViews();
-                Toast.makeText(AppointmentActivity.this, "Success", Toast.LENGTH_SHORT).show();
-            }
-            if (requestType.equals("POST")) {
-                Toast.makeText(AppointmentActivity.this, "Appointment Booked", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AppointmentActivity.this, LoggedInActivity.class);
-                startActivity(intent);
-                finish();
+            switch (requestType) {
+                case "GET":
+                    Appointments[] appArray = converter.fromJson(response.getContent(), Appointments[].class);
+                    app.clear();
+                    app.addAll(Arrays.asList(appArray));
+                    lvAppointments.invalidateViews();
+                    Toast.makeText(AppointmentActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    break;
+                case "POST":
+                    Toast.makeText(AppointmentActivity.this, "Appointment Booked", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AppointmentActivity.this, LoggedInActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
             }
         }
     }

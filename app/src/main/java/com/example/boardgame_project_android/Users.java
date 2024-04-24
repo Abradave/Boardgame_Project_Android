@@ -21,6 +21,14 @@ public class Users {
         this.g_phone_number = g_phone_number;
     }
 
+    public Users(int id, String g_username, String g_name, String g_phone_number) {
+        this.id = id;
+        this.g_username = g_username;
+        this.g_password = g_password;
+        this.g_name = g_name;
+        this.g_phone_number = g_phone_number;
+    }
+
     public Users(String g_email, String g_password) {
         this.g_email = g_email;
         this.g_password = g_password;
