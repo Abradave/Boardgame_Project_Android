@@ -20,7 +20,7 @@ Az android alkalmazás a játékosok számára készült.
 ## Telepítés
 
 - Fejlesztőknek a projekt klónozását követően az alkalmazás indításához az Android Studio programcsomag használata javasolt. 
-- A futtatás előtt el kell indítani az alkalmazás Backendjét a [Backend](https://github.com/Abradave/boardGames_backend) git repojának README.md fájljában leírtak szerint.
+- A futtatás előtt el kell indítani az alkalmazás Backendjét a [Backend](https://github.com/Abradave/boardGames_backend/blob/main/README.md) git repojának README.md fájljában leírtak szerint.
 - Az alkalmazás működése Android Studioban Pixel 7 emulatoron lett tesztelve.
 
 ## Dokumentáció
