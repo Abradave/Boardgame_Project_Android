@@ -28,10 +28,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText txtLoginEmail;
-    private EditText txtLoginPassword;
-    private AppCompatButton btnLoginLogin;
-    private AppCompatButton btnLoginBack;
+    private EditText txtLoginEmail, txtLoginPassword;
+    private AppCompatButton btnLoginLogin, btnLoginBack;
     private final String url = "http://10.0.2.2:8000/api/guestlogin";
 
     @Override

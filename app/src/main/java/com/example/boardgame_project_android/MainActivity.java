@@ -13,9 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatButton btnMainLogin;
-    private AppCompatButton btnMainRegister;
-    private AppCompatButton btnMainAbout;
+    private AppCompatButton btnMainLogin, btnMainAbout, btnMainRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

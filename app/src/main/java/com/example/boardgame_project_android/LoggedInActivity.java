@@ -27,13 +27,7 @@ import javax.security.auth.login.LoginException;
 
 public class LoggedInActivity extends AppCompatActivity {
 
-    private AppCompatButton btnLoggedList;
-    private AppCompatButton btnLoggedMakeAppointment;
-    private AppCompatButton btnLoggedAppointments;
-    private AppCompatButton btnLoggedProfile;
-    private AppCompatButton btnLoggedLogout;
-    private String url = "http://10.0.2.2:8000/api/guest";
-    private String urlLogout = "http://10.0.2.2:8000/api/guestlogout";
+    private AppCompatButton btnLoggedList, btnLoggedMakeAppointment, btnLoggedAppointments, btnLoggedProfile, btnLoggedLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +50,12 @@ public class LoggedInActivity extends AppCompatActivity {
 
         btnLoggedMakeAppointment.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, AppointmentActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        btnLoggedAppointments.setOnClickListener(v -> {
+            Intent intent = new Intent(LoggedInActivity.this, MyAppointmentsActivity.class);
             startActivity(intent);
             finish();
         });

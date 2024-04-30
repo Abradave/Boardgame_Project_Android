@@ -1,6 +1,6 @@
 package com.example.boardgame_project_android;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Appointments {
     private int id;
@@ -21,8 +21,18 @@ public class Appointments {
         this.number_of_players = number_of_players;
     }
 
-    public Appointments(int booked, int number_of_players) {
+    public Appointments(int employee_id, int booked, int number_of_players, int guest_id, int board_game_id) {
+        this.employee_id = employee_id;
         this.booked = booked;
+        this.guest_id = guest_id;
+        this.board_game_id = board_game_id;
+        this.number_of_players = number_of_players;
+    }
+
+    public Appointments(int booked, int guest_id, int board_game_id, int number_of_players) {
+        this.booked = booked;
+        this.guest_id = guest_id;
+        this.board_game_id = board_game_id;
         this.number_of_players = number_of_players;
     }
 

@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvAppointmentDate"
+            android:id="@+id/tvMyAppointmentDate"
             android:textColor="@color/text"
             android:textAlignment="center"
             android:text="1234:324:234">
@@ -19,12 +22,12 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnAppointmentChoose"
+            android:id="@+id/btnMyAppointmentDelete"
             android:textColor="@color/text"
             android:backgroundTint="@color/button"
-            android:text="Choose">
+            android:text="Delete">
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 

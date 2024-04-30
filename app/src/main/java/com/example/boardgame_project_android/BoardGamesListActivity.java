@@ -73,8 +73,10 @@ public class BoardGamesListActivity extends AppCompatActivity {
             TextView txtBoardGameMin = view.findViewById(R.id.txtBoardGameMinPlayer);
             TextView txtBoardGameMax = view.findViewById(R.id.txtBoardGameMaxPlayer);
             TextView txtBoardGameDisc = view.findViewById(R.id.txtBoardGameDescription);
+            TextView txtBoardGameId = view.findViewById(R.id.txtBoardGameId);
             BoardGames actbg = bg.get(position);
 
+            txtBoardGameId.setText(String.valueOf(actbg.getId()));
             txtBoardGameName.setText(actbg.getBg_name());
             txtBoardGameMin.setText(String.valueOf(actbg.getMin_players()));
             txtBoardGameMax.setText(String.valueOf(actbg.getMax_players()));
