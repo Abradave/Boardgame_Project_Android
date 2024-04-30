@@ -120,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
         protected void onPostExecute(Response response){
             if (response.getResponseCode() >= 400){
                 if (response.getResponseCode() == 422 && response.getContent().contains("email")){
-                    Toast.makeText(RegisterActivity.this, "This email has been registered already!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Something wrong with the Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else if (response.getContent().contains("username")){

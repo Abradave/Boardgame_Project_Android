@@ -139,7 +139,6 @@ public class AppointmentActivity extends AppCompatActivity {
                 ActualUser.appointmnet_id = actapp.getId();
                 ActualUser.e_id = actapp.getEmployee_id();
                 ActualUser.booked = 1;
-                Toast.makeText(AppointmentActivity.this,String.valueOf(ActualUser.appointmnet_id), Toast.LENGTH_SHORT).show();
             });
             return view;
         }

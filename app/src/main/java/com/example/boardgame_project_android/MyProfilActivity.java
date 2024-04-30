@@ -59,13 +59,18 @@ public class MyProfilActivity extends AppCompatActivity {
             String username = txtProfileUsername.getEditText().getText().toString();
             String phone = txtProfilePhone.getEditText().getText().toString();
 
-            Users updatedUser = new Users(ActualUser.id,username,fullname,phone);
-            Gson converter = new Gson();
-            MyProfilActivity.RequestTask updatetask = new MyProfilActivity.RequestTask(url,"PUT",converter.toJson(updatedUser));
-            updatetask.execute();
-            Intent intent = new Intent(MyProfilActivity.this, LoggedInActivity.class);
-            startActivity(intent);
-            finish();
+            if (fullname.isEmpty() || username.isEmpty() || phone.isEmpty()){
+                Toast.makeText(MyProfilActivity.this, "All Data is Mandatory", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Users updatedUser = new Users(ActualUser.id, username, fullname, phone);
+                Gson converter = new Gson();
+                MyProfilActivity.RequestTask updatetask = new MyProfilActivity.RequestTask(url, "PUT", converter.toJson(updatedUser));
+                updatetask.execute();
+                Intent intent = new Intent(MyProfilActivity.this, LoggedInActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
 
         //Gomb kattintási esemény a felhasználó adatbázisból való törléséhez.
