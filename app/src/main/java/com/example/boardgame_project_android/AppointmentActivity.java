@@ -71,7 +71,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 ActualUser.bg_id = Integer.parseInt(boardGameId);
                 ActualUser.number_of_players = Integer.parseInt(playerCount);
 
-                Appointments updatedAppointment = new Appointments(ActualUser.appointmnet_id , ActualUser.appointment, ActualUser.e_id, ActualUser.booked, ActualUser.id, ActualUser.bg_id, ActualUser.number_of_players);
+                Appointments updatedAppointment = new Appointments(ActualUser.appointmnet_id, ActualUser.appointment, ActualUser.e_id, ActualUser.booked, ActualUser.id, ActualUser.bg_id, ActualUser.number_of_players);
                 Gson converter = new Gson();
                 AppointmentActivity.RequestTask updatetask = new AppointmentActivity.RequestTask(urlappointment, "PUT", converter.toJson(updatedAppointment));
                 updatetask.execute();

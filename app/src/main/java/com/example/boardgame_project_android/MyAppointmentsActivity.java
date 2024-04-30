@@ -3,6 +3,7 @@ package com.example.boardgame_project_android;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -80,7 +82,7 @@ public class MyAppointmentsActivity extends AppCompatActivity {
                 tvMyAppointmentDateList.setText(actapp.getAppointment());
             }
             else {
-                tvMyAppointmentDateList.setVisibility(View.GONE);
+                tvMyAppointmentDateList.setVisibility(View.INVISIBLE);
             }
             return view;
         }

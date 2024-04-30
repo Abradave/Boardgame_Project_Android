@@ -9,7 +9,7 @@
     android:gravity="center"
     tools:context=".AboutActivity"
     android:padding="15dp"
-    android:background="@color/background">
+    android:background="@drawable/hattergrass">
 
     <TextView
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="20sp">
+        android:textSize="25sp">
     </TextView>
 
     <TextView
@@ -30,7 +30,8 @@
         android:padding="10dp"
         android:textColor="@color/text"
         android:textAlignment="center"
-        android:textSize="17sp">
+        android:textStyle="bold"
+        android:textSize="20sp">
     </TextView>
 
     <TextView
@@ -40,7 +41,8 @@
         android:padding="10dp"
         android:textColor="@color/text"
         android:textAlignment="center"
-        android:textSize="17sp">
+        android:textStyle="bold"
+        android:textSize="20sp">
     </TextView>
 
     <TextView
@@ -50,7 +52,8 @@
         android:padding="10dp"
         android:textColor="@color/text"
         android:textAlignment="center"
-        android:textSize="17sp">
+        android:textStyle="bold"
+        android:textSize="20sp">
     </TextView>
 
     <TextView
@@ -62,7 +65,7 @@
         android:textAllCaps="true"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="20sp">
+        android:textSize="25sp">
     </TextView>
 
     <TextView
@@ -72,7 +75,8 @@
         android:padding="10dp"
         android:textColor="@color/text"
         android:textAlignment="center"
-        android:textSize="17sp">
+        android:textStyle="bold"
+        android:textSize="20sp">
     </TextView>
 
     <androidx.appcompat.widget.AppCompatButton

@@ -13,6 +13,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvAppointmentDate"
             android:textColor="@color/text"
+            android:textStyle="bold"
+            android:textSize="15dp"
             android:textAlignment="center"
             android:text="1234:324:234">
         </TextView>

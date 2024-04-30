@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MyAppointmentsActivity"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@drawable/hattermountain"
     android:padding="10dp">
 
     <androidx.appcompat.widget.AppCompatButton

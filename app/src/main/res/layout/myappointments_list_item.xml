@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
     android:padding="10dp">
 
     <LinearLayout
@@ -17,6 +16,8 @@
             android:id="@+id/tvMyAppointmentDate"
             android:textColor="@color/text"
             android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="20dp"
             android:text="1234:324:234">
         </TextView>
 
