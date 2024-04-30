@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MyProfilActivity extends AppCompatActivity {
+    //Változók deklarálása.
     private TextInputLayout txtProfileUsername, txtProfileFullname, txtProfilePhone;
     private AppCompatButton btnProfileBack, btnProfileUpdate, btnProfileDelete;
     private List<Users> users = new ArrayList<>();
@@ -39,17 +40,20 @@ public class MyProfilActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
         RequestTask task = new RequestTask(url, "GET");
         task.execute();
 
 
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnProfileBack.setOnClickListener(v -> {
             Intent intent = new Intent(MyProfilActivity.this, LoggedInActivity.class);
             startActivity(intent);
             finish();
         });
 
+        //Gomb kattintási esemény a felhasználói adatok felülírásához.
         btnProfileUpdate.setOnClickListener(v -> {
             String fullname = txtProfileFullname.getEditText().getText().toString();
             String username = txtProfileUsername.getEditText().getText().toString();
@@ -64,6 +68,7 @@ public class MyProfilActivity extends AppCompatActivity {
             finish();
         });
 
+        //Gomb kattintási esemény a felhasználó adatbázisból való törléséhez.
         btnProfileDelete.setOnClickListener(v -> {
             MyProfilActivity.RequestTask deletetask = new MyProfilActivity.RequestTask(url,"DELETE");
             deletetask.execute();
@@ -74,6 +79,7 @@ public class MyProfilActivity extends AppCompatActivity {
 
 
     }
+    //Változók inicializálása.
     public void init(){
         txtProfileFullname = findViewById(R.id.txtProfileFullname);
         txtProfileUsername = findViewById(R.id.txtProfileUsername);
@@ -82,22 +88,26 @@ public class MyProfilActivity extends AppCompatActivity {
         btnProfileUpdate = findViewById(R.id.btnProfileUpdate);
         btnProfileDelete = findViewById(R.id.btnProfileDelete);
     }
-    
 
+
+    //Request Task osztály létrehozása 3 változóval.
     public class RequestTask extends AsyncTask<Void, Void, Response> {
         String requestUrl;
         String requestType;
         String requestParams;
 
+        //Request Task osztály konstruktora 3 változóra.
         public RequestTask(String requestUrl, String requestType, String requestParams){
             this.requestUrl = requestUrl;
             this.requestType = requestType;
             this.requestParams = requestParams;
         }
+        //Request Task osztály konstruktora 2 változóra.
         public RequestTask(String requestUrl, String requestType){
             this.requestUrl = requestUrl;
             this.requestType = requestType;
         }
+        //API csatlakozás lehetőségek megadása.
         @Override
         protected Response doInBackground(Void... voids){
             Response response = null;
@@ -118,6 +128,7 @@ public class MyProfilActivity extends AppCompatActivity {
             }
             return response;
         }
+        //API csatlakozás végrehajtása.
         @Override
         protected void onPostExecute(Response response){
             super.onPostExecute(response);
@@ -132,7 +143,6 @@ public class MyProfilActivity extends AppCompatActivity {
                     txtProfileFullname.getEditText().setText(userObj.getG_name());
                     txtProfileUsername.getEditText().setText(userObj.getG_username());
                     txtProfilePhone.getEditText().setText(userObj.getG_phone_number());
-                    Toast.makeText(MyProfilActivity.this, "Success Getting Data", Toast.LENGTH_SHORT).show();
                     break;
                 case "PUT":
                     Users updateUser = converter.fromJson(response.getContent(), Users.class);

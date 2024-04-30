@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AboutActivity extends AppCompatActivity {
 
+    //Változók deklarálása.
     private AppCompatButton btnAboutBack;
 
     @Override
@@ -24,14 +25,17 @@ public class AboutActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
 
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnAboutBack.setOnClickListener(v -> {
             Intent intent = new Intent(AboutActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
     }
+    //Változók inicializálása.
     public void init(){
         btnAboutBack = findViewById(R.id.btnAboutBack);
     }

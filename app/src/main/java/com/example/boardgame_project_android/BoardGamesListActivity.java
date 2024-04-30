@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BoardGamesListActivity extends AppCompatActivity {
-
+    //Változók deklarálása.
     private String url = "http://10.0.2.2:8000/api/boardgame";
     private ListView lvBoardGamesList;
     private List<BoardGames> bg = new ArrayList<>();
@@ -47,13 +47,14 @@ public class BoardGamesListActivity extends AppCompatActivity {
         init();
         RequestTask task = new RequestTask(url, "GET");
         task.execute();
-
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnListBack.setOnClickListener(v -> {
             Intent intent = new Intent(BoardGamesListActivity.this, LoggedInActivity.class);
             startActivity(intent);
             finish();
         });
     }
+    //Változók inicializálása.
     public void init(){
         lvBoardGamesList = findViewById(R.id.lvBoardGamesList);
         lvBoardGamesList.setAdapter(new BoardGamesAdapter());
@@ -68,6 +69,8 @@ public class BoardGamesListActivity extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
             LayoutInflater inflater = getLayoutInflater();
+            //Adatok kilistázása az adatbázisból a megadott forma alapján.
+            //Helyi változók deklarálása és inicializálása.
             View view = inflater.inflate(R.layout.board_games_list_items,null,false);
             TextView txtBoardGameName = view.findViewById(R.id.txtBoardGameName);
             TextView txtBoardGameMin = view.findViewById(R.id.txtBoardGameMinPlayer);
@@ -75,7 +78,7 @@ public class BoardGamesListActivity extends AppCompatActivity {
             TextView txtBoardGameDisc = view.findViewById(R.id.txtBoardGameDescription);
             TextView txtBoardGameId = view.findViewById(R.id.txtBoardGameId);
             BoardGames actbg = bg.get(position);
-
+            //Helyi változók értékeinek megadása.
             txtBoardGameId.setText(String.valueOf(actbg.getId()));
             txtBoardGameName.setText(actbg.getBg_name());
             txtBoardGameMin.setText(String.valueOf(actbg.getMin_players()));
@@ -85,14 +88,17 @@ public class BoardGamesListActivity extends AppCompatActivity {
         }
     }
 
+    //Request Task osztály létrehozása 2 változóval.
     public class RequestTask extends AsyncTask<Void, Void, Response>{
         String requestUrl;
         String requestType;
 
+        //Request Task osztály konstruktora 2 változóra.
         public RequestTask(String requestUrl, String requestType){
             this.requestUrl = requestUrl;
             this.requestType = requestType;
         }
+        //API csatlakozás lehetőségek megadása.
         @Override
         protected Response doInBackground(Void... voids){
             Response response = null;
@@ -105,6 +111,7 @@ public class BoardGamesListActivity extends AppCompatActivity {
             }
             return response;
         }
+        //API csatlakozás végrehajtása.
         @Override
         protected void onPostExecute(Response response){
             super.onPostExecute(response);

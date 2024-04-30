@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
+//Változók deklarálása.
 public class LoginActivity extends AppCompatActivity {
     private TextInputLayout txtLoginEmail, txtLoginPassword;
     private AppCompatButton btnLoginLogin, btnLoginBack;
@@ -43,21 +43,25 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
-
+        //Gomb kattintási esemény a bejelentkezéshez.
         btnLoginLogin.setOnClickListener(v -> {
+            //Helyi változók deklarálása és inicializálása.
             String email = Objects.requireNonNull(txtLoginEmail.getEditText().getText()).toString();
             String password = Objects.requireNonNull(txtLoginPassword.getEditText().getText()).toString();
             if (email.isEmpty() || password.isEmpty()){
+                //Ha nem adja meg vagy nem jól akkor nem tud továbblépni.
                 Toast.makeText(LoginActivity.this, "All data is mandatory", Toast.LENGTH_SHORT).show();
             }else {
+                //Ha helyesen adta meg akkor belép az érvényes felhasználóval.
                 Users user = new Users(email, password);
                 Gson jsonConverter = new Gson();
                 RequestTask task = new RequestTask(url, "POST", jsonConverter.toJson(user));
                 task.execute();
             }
         });
-
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnLoginBack.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -65,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Változók Inicializálása.
     public void init(){
         txtLoginEmail = findViewById(R.id.txtLoginEmail);
         txtLoginPassword = findViewById(R.id.txtLoginPassword);
@@ -72,15 +77,18 @@ public class LoginActivity extends AppCompatActivity {
         btnLoginBack = findViewById(R.id.btnLoginBack);
     }
 
+    //Request Task osztály létrehozása 3 változóval.
     private class RequestTask extends AsyncTask<Void,Void,Response> {
         String requestUrl;
         String requestType;
         String requestParams;
+        //Request Task osztály konstruktora 3 változóra.
         public RequestTask(String requestUrl, String requestType, String requestParams) {
             this.requestUrl = requestUrl;
             this.requestType = requestType;
             this.requestParams = requestParams;
         }
+        //API csatlakozás lehetőségek megadása.
         @Override
         protected Response doInBackground(Void... voids) {
             Response response = null;
@@ -93,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             return response;
         }
+        //API csatlakozás végrehajtása illetve figyelmeztetés ha nem jönne létre a csatlakozás.
         protected void onPostExecute(Response response){
             if (response.getResponseCode() >= 400){
                 Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();

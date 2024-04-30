@@ -27,6 +27,7 @@ import javax.security.auth.login.LoginException;
 
 public class LoggedInActivity extends AppCompatActivity {
 
+    //Változók deklarálása.
     private AppCompatButton btnLoggedList, btnLoggedMakeAppointment, btnLoggedAppointments, btnLoggedProfile, btnLoggedLogout;
 
     @Override
@@ -41,31 +42,31 @@ public class LoggedInActivity extends AppCompatActivity {
         });
         init();
 
-
+        //Gomb kattintási esemény a társasjátékok listázási oldalára ugráshoz.
         btnLoggedList.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, BoardGamesListActivity.class);
             startActivity(intent);
             finish();
         });
-
+        //Gomb kattintási esemény az időpontok foglalási és listázási oldalára ugráshoz.
         btnLoggedMakeAppointment.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, AppointmentActivity.class);
             startActivity(intent);
             finish();
         });
-
+        //Gomb kattintási esemény a saját időpomtok listázási oldalára ugráshoz.
         btnLoggedAppointments.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, MyAppointmentsActivity.class);
             startActivity(intent);
             finish();
         });
-
+        //Gomb kattintási esemény a saját profil oldalára ugráshoz.
         btnLoggedProfile.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, MyProfilActivity.class);
             startActivity(intent);
             finish();
         });
-
+        //Gomb kattintási esemény a kijeletkezéshez.
         btnLoggedLogout.setOnClickListener(v -> {
             Intent intent = new Intent(LoggedInActivity.this, MainActivity.class);
             ActualUser.id = 0;
@@ -73,6 +74,7 @@ public class LoggedInActivity extends AppCompatActivity {
             finish();
         });
     }
+    //Változók inicializálása.
     public void init(){
         btnLoggedList = findViewById(R.id.btnLoggedList);
         btnLoggedMakeAppointment = findViewById(R.id.btnLoggedMakeAppointment);

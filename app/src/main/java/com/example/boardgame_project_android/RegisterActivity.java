@@ -25,7 +25,7 @@ import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    //Változók deklarálása.
     private TextInputLayout txtRegisterEmial, txtRegisterPassword, txtRegisterUsername, txtRegisterFullname, txtRegisterPhone;
     private AppCompatButton btnRegisterBack, btnRegisterRegister;
     private String url = "http://10.0.2.2:8000/api/guestregister";
@@ -40,9 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
 
 
+        //Gomb kattintási esemény a felhasználó adatbázisban való regisztrálásához.
         btnRegisterRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnRegisterBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    //Változók inicializálása.
     public void init(){
         txtRegisterEmial = findViewById(R.id.txtRegisterEmail);
         txtRegisterPassword = findViewById(R.id.txtRegisterPassword);
@@ -84,15 +88,21 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegisterRegister = findViewById(R.id.btnRegisterRegister);
         btnRegisterBack = findViewById(R.id.btnRegisterBack);
     }
+
+    //Request Task osztály létrehozása 3 változóval.
     private class RequestTask extends AsyncTask<Void,Void,Response> {
         String requestUrl;
         String requestType;
         String requestParams;
+
+        //Request Task osztály konstruktora 3 változóra.
         public RequestTask(String requestUrl, String requestType, String requestParams) {
             this.requestUrl = requestUrl;
             this.requestType = requestType;
             this.requestParams = requestParams;
         }
+
+        //API csatlakozás lehetőségek megadása.
         @Override
         protected Response doInBackground(Void... voids) {
             Response response = null;
@@ -106,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             return response;
         }
+        //API csatlakozás végrehajtása.
         protected void onPostExecute(Response response){
             if (response.getResponseCode() >= 400){
                 if (response.getResponseCode() == 422 && response.getContent().contains("email")){
@@ -121,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
             if (requestType.equals("POST")){
-                Toast.makeText(RegisterActivity.this, "Success",  Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Successful Registration",  Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

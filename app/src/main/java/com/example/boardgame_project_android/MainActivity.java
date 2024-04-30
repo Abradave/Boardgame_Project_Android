@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Változók deklarálása.
     private AppCompatButton btnMainLogin, btnMainAbout, btnMainRegister;
 
     @Override
@@ -25,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
 
+        //Gomb kattintási esemény a Login oldalra ugráshoz.
         btnMainLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Gomb kattintási esemény a Regisztráció oldalra ugráshoz.
         btnMainRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Gomb kattintási esemény a készítői adatok oldalra ugráshoz.
         btnMainAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Változók inicializálása.
     public void init(){
         btnMainLogin = findViewById(R.id.btnMainLogin);
         btnMainRegister = findViewById(R.id.btnMainRegister);

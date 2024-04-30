@@ -34,6 +34,7 @@ import java.util.List;
 
 public class MyAppointmentsActivity extends AppCompatActivity {
 
+    //Változók deklarálása.
     private String urlappointment = "http://10.0.2.2:8000/api/appointment";
     private ListView lvMyAppointments;
     private AppCompatButton btnMyAppointmentBack;
@@ -48,21 +49,25 @@ public class MyAppointmentsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Függvények meghívása.
         init();
         MyAppointmentsActivity.RequestTask taskapp = new MyAppointmentsActivity.RequestTask(urlappointment, "GET");
         taskapp.execute();
 
+        //Gomb kattintási esemény a Back Gomb visszalépéséhez.
         btnMyAppointmentBack.setOnClickListener(v -> {
             Intent intent = new Intent(MyAppointmentsActivity.this, LoggedInActivity.class);
             startActivity(intent);
             finish();
         });
     }
+    //Változók inicializálása.
     public void init() {
         lvMyAppointments = findViewById(R.id.lvMyAppointments);
         lvMyAppointments.setAdapter(new AppointmentsAdapter());
         btnMyAppointmentBack = findViewById(R.id.btnMyAppoinmentBack);
     }
+    //Egy adapter létrehozása amely a kilistázásban játszik szerepet.
     private class AppointmentsAdapter extends ArrayAdapter<Appointments> {
 
         public AppointmentsAdapter() {
@@ -73,29 +78,36 @@ public class MyAppointmentsActivity extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
+            //Adatok kilistázása az adatbázisból a megadott forma alapján.
             View view = inflater.inflate(R.layout.myappointments_list_item, null, false);
+            //Helyi változók deklarálása és inicializálása.
             TextView tvMyAppointmentDateList = view.findViewById(R.id.tvMyAppointmentDate);
 
             Appointments actapp = appointment.get(position);
 
+            //Ha a felhasználó foglalta az időpontot Id alapján akkor azt kilistázza a program
             if (ActualUser.id == actapp.getGuest_id()){
                 tvMyAppointmentDateList.setText(actapp.getAppointment());
             }
+            //Ha más Id szerepel akkor nem eltünteti.
             else {
                 tvMyAppointmentDateList.setVisibility(View.INVISIBLE);
             }
             return view;
         }
     }
+    //Request Task osztály létrehozása 2 változóval.
     public class RequestTask extends AsyncTask<Void, Void, Response> {
         String requestUrl;
         String requestType;
 
+        //Request Task osztály konstruktora 2 változóra.
         public RequestTask(String requestUrl, String requestType) {
             this.requestUrl = requestUrl;
             this.requestType = requestType;
         }
 
+        //API csatlakozás lehetőségek megadása.
         @Override
         protected Response doInBackground(Void... voids) {
             Response response = null;
@@ -111,6 +123,7 @@ public class MyAppointmentsActivity extends AppCompatActivity {
             return response;
         }
 
+        //API csatlakozás végrehajtása.
         @Override
         protected void onPostExecute(Response response) {
             super.onPostExecute(response);
