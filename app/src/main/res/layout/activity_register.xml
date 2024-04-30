@@ -19,65 +19,90 @@
         android:paddingRight="15dp"
         android:paddingLeft="15dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterEmail"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtRegisterEmail">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColor="@color/text"
+                android:inputType="textEmailAddress">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterPassword"
-            android:inputType="textPassword"
-            android:hint="Password"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtRegisterPassword">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textColor="@color/text"
+                android:inputType="textPassword">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterUsername"
-            android:inputType="text"
-            android:hint="Username"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtRegisterUsername">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:textColor="@color/text"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterFullname"
-            android:inputType="text"
-            android:hint="Fullname"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtRegisterFullname">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fullname"
+                android:textColor="@color/text"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegisterPhone"
-            android:inputType="text"
-            android:hint="Phone Number"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtRegisterPhone">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColor="@color/text"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout

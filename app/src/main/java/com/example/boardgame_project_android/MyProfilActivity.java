@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -23,12 +24,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MyProfilActivity extends AppCompatActivity {
-    private EditText txtProfileUsername;
-    private EditText txtProfileFullname;
-    private EditText txtProfilePhone;
-    private AppCompatButton btnProfileBack;
-    private AppCompatButton btnProfileUpdate;
-    private AppCompatButton btnProfileDelete;
+    private TextInputLayout txtProfileUsername, txtProfileFullname, txtProfilePhone;
+    private AppCompatButton btnProfileBack, btnProfileUpdate, btnProfileDelete;
     private List<Users> users = new ArrayList<>();
     private String url = "http://10.0.2.2:8000/api/guest";
 
@@ -54,9 +51,9 @@ public class MyProfilActivity extends AppCompatActivity {
         });
 
         btnProfileUpdate.setOnClickListener(v -> {
-            String fullname = txtProfileFullname.getText().toString();
-            String username = txtProfileUsername.getText().toString();
-            String phone = txtProfilePhone.getText().toString();
+            String fullname = txtProfileFullname.getEditText().getText().toString();
+            String username = txtProfileUsername.getEditText().getText().toString();
+            String phone = txtProfilePhone.getEditText().getText().toString();
 
             Users updatedUser = new Users(ActualUser.id,username,fullname,phone);
             Gson converter = new Gson();
@@ -132,9 +129,9 @@ public class MyProfilActivity extends AppCompatActivity {
             switch (requestType){
                 case "GET":
                     Users userObj = converter.fromJson(response.getContent(),Users.class);
-                    txtProfileFullname.setText(userObj.getG_name());
-                    txtProfileUsername.setText(userObj.getG_username());
-                    txtProfilePhone.setText(userObj.getG_phone_number());
+                    txtProfileFullname.getEditText().setText(userObj.getG_name());
+                    txtProfileUsername.getEditText().setText(userObj.getG_username());
+                    txtProfilePhone.getEditText().setText(userObj.getG_phone_number());
                     Toast.makeText(MyProfilActivity.this, "Success Getting Data", Toast.LENGTH_SHORT).show();
                     break;
                 case "PUT":

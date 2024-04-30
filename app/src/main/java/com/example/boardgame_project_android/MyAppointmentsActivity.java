@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class MyAppointmentsActivity extends AppCompatActivity {
@@ -72,7 +73,6 @@ public class MyAppointmentsActivity extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.myappointments_list_item, null, false);
             TextView tvMyAppointmentDateList = view.findViewById(R.id.tvMyAppointmentDate);
-            Button btnMyAppointmentDelete = view.findViewById(R.id.btnMyAppointmentDelete);
 
             Appointments actapp = appointment.get(position);
 
@@ -81,35 +81,17 @@ public class MyAppointmentsActivity extends AppCompatActivity {
             }
             else {
                 tvMyAppointmentDateList.setVisibility(View.GONE);
-                btnMyAppointmentDelete.setVisibility(View.GONE);
             }
-
-            btnMyAppointmentDelete.setOnClickListener(v -> {
-                Appointments updatedAppointment = new Appointments(0, 0, 0, 0);
-                Gson converter = new Gson();
-                MyAppointmentsActivity.RequestTask updatetask = new MyAppointmentsActivity.RequestTask(urlappointment, "PUT", converter.toJson(updatedAppointment));
-                updatetask.execute();
-                Intent intent = new Intent(MyAppointmentsActivity.this, LoggedInActivity.class);
-                startActivity(intent);
-                finish();
-            });
             return view;
         }
     }
     public class RequestTask extends AsyncTask<Void, Void, Response> {
         String requestUrl;
         String requestType;
-        String requestParams;
 
         public RequestTask(String requestUrl, String requestType) {
             this.requestUrl = requestUrl;
             this.requestType = requestType;
-        }
-
-        public RequestTask(String requestUrl, String requestType, String requestParams) {
-            this.requestUrl = requestUrl;
-            this.requestType = requestType;
-            this.requestParams = requestParams;
         }
 
         @Override
@@ -119,9 +101,6 @@ public class MyAppointmentsActivity extends AppCompatActivity {
                 switch(requestType){
                     case "GET":
                         response = RequestHandler.get(requestUrl);
-                        break;
-                    case "PUT":
-                        response = RequestHandler.put(requestUrl + "/" + ActualUser.appointmnet_id,requestParams);
                         break;
                 }
             } catch (IOException e) {
@@ -144,12 +123,6 @@ public class MyAppointmentsActivity extends AppCompatActivity {
                     appointment.clear();
                     appointment.addAll(Arrays.asList(appArray));
                     lvMyAppointments.invalidateViews();
-                    break;
-                case "PUT":
-
-                    Appointments updateAppointment = converter.fromJson(response.getContent(), Appointments.class);
-                    appointment.replaceAll(appointments -> appointments.getId() == updateAppointment.getId() ? updateAppointment : appointments);
-                    Toast.makeText(MyAppointmentsActivity.this,String.valueOf(ActualUser.appointmnet_id), Toast.LENGTH_SHORT).show();
                     break;
             }
         }

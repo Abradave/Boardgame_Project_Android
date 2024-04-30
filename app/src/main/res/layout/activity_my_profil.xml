@@ -19,41 +19,53 @@
         android:paddingRight="15dp"
         android:paddingLeft="15dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtProfileUsername"
-            android:inputType="text"
-            android:hint="Username"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtProfileUsername">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:textColor="@color/text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtProfileFullname"
-            android:inputType="text"
-            android:hint="Fullname"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtProfileFullname">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fullname"
+                android:textColor="@color/text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtProfilePhone"
-            android:inputType="text"
-            android:hint="Phone Number"
-            android:textColor="@color/text"
             android:textColorHint="@color/text"
-            android:textAlignment="center"
-            android:textSize="23dp">
-        </EditText>
+            app:hintTextColor="@color/text"
+            app:cursorColor="@color/text"
+            app:boxStrokeColor="@color/text"
+            android:id="@+id/txtProfilePhone">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColor="@color/text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout

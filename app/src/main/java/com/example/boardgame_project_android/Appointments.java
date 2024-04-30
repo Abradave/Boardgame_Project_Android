@@ -21,7 +21,8 @@ public class Appointments {
         this.number_of_players = number_of_players;
     }
 
-    public Appointments(int employee_id, int booked, int number_of_players, int guest_id, int board_game_id) {
+    public Appointments(int id, int employee_id, int booked, int number_of_players, int guest_id, int board_game_id) {
+        this.id = id;
         this.employee_id = employee_id;
         this.booked = booked;
         this.guest_id = guest_id;

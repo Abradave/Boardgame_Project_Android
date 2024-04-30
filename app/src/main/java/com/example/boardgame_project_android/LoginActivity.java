@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText txtLoginEmail, txtLoginPassword;
+    private TextInputLayout txtLoginEmail, txtLoginPassword;
     private AppCompatButton btnLoginLogin, btnLoginBack;
     private final String url = "http://10.0.2.2:8000/api/guestlogin";
 
@@ -45,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         init();
 
         btnLoginLogin.setOnClickListener(v -> {
-            String email = Objects.requireNonNull(txtLoginEmail.getText()).toString();
-            String password = Objects.requireNonNull(txtLoginPassword.getText()).toString();
+            String email = Objects.requireNonNull(txtLoginEmail.getEditText().getText()).toString();
+            String password = Objects.requireNonNull(txtLoginPassword.getEditText().getText()).toString();
             if (email.isEmpty() || password.isEmpty()){
                 Toast.makeText(LoginActivity.this, "All data is mandatory", Toast.LENGTH_SHORT).show();
             }else {

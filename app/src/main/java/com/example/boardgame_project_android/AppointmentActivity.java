@@ -71,7 +71,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 ActualUser.bg_id = Integer.parseInt(boardGameId);
                 ActualUser.number_of_players = Integer.parseInt(playerCount);
 
-                Appointments updatedAppointment = new Appointments(ActualUser.e_id, 1, ActualUser.number_of_players, ActualUser.id, ActualUser.bg_id);
+                Appointments updatedAppointment = new Appointments(ActualUser.appointmnet_id , ActualUser.appointment, ActualUser.e_id, ActualUser.booked, ActualUser.id, ActualUser.bg_id, ActualUser.number_of_players);
                 Gson converter = new Gson();
                 AppointmentActivity.RequestTask updatetask = new AppointmentActivity.RequestTask(urlappointment, "PUT", converter.toJson(updatedAppointment));
                 updatetask.execute();
@@ -121,6 +121,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 tvAppointmentChoosenDate.setText(actapp.getAppointment());
                 ActualUser.appointmnet_id = actapp.getId();
                 ActualUser.e_id = actapp.getEmployee_id();
+                ActualUser.booked = 1;
                 Toast.makeText(AppointmentActivity.this,String.valueOf(ActualUser.appointmnet_id), Toast.LENGTH_SHORT).show();
             });
             return view;

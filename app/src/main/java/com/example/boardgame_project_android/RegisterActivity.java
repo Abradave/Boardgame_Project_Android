@@ -26,13 +26,8 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText txtRegisterEmial;
-    private EditText txtRegisterPassword;
-    private EditText txtRegisterUsername;
-    private EditText txtRegisterFullname;
-    private EditText txtRegisterPhone;
-    private AppCompatButton btnRegisterRegister;
-    private AppCompatButton btnRegisterBack;
+    private TextInputLayout txtRegisterEmial, txtRegisterPassword, txtRegisterUsername, txtRegisterFullname, txtRegisterPhone;
+    private AppCompatButton btnRegisterBack, btnRegisterRegister;
     private String url = "http://10.0.2.2:8000/api/guestregister";
 
     @Override
@@ -51,11 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegisterRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = txtRegisterEmial.getText().toString();
-                String password = txtRegisterPassword.getText().toString();
-                String username = txtRegisterUsername.getText().toString();
-                String fullname = txtRegisterFullname.getText().toString();
-                String phone = txtRegisterPhone.getText().toString();
+                String email = txtRegisterEmial.getEditText().getText().toString();
+                String password = txtRegisterPassword.getEditText().getText().toString();
+                String username = txtRegisterUsername.getEditText().getText().toString();
+                String fullname = txtRegisterFullname.getEditText().getText().toString();
+                String phone = txtRegisterPhone.getEditText().getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()|| username.isEmpty() || fullname.isEmpty() || phone.isEmpty()){
                     Toast.makeText(RegisterActivity.this, "All data is required!", Toast.LENGTH_SHORT).show();
